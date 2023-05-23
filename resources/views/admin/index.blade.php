@@ -30,10 +30,10 @@
                                     <td>
                                         <form action="{{ route('admin.projects.destroy', $project->id) }}" method="post">
                                             <a class="btn btn-primary"
-                                                href="{{ route('admin.projects.show', $project->id) }}"><i
+                                                href="{{ route('admin.projects.show', $project->slug) }}"><i
                                                     class="fa-solid fa-info"></i></a>
                                             <a class="btn btn-primary"
-                                                href="{{ route('admin.projects.edit', $project->id) }}"><i
+                                                href="{{ route('admin.projects.edit', $project) }}"><i
                                                     class="fa-solid fa-file-pen"></i></a>
 
                                             @csrf

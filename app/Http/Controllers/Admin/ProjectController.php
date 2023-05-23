@@ -48,6 +48,7 @@ class ProjectController extends Controller
         $newProject->name = $data['nameField'];
         $newProject->description = $data['descriptionField'];
         $newProject->thumb = $data['thumbField'];
+        $newProject->slug = Project::assignSlug($data['nameField']);
         $newProject->save();
 
         return redirect()->route('admin.projects.index');
@@ -70,10 +71,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        $project = Project::findOrFail($id);
-        return view('admin.edit', ['project' => $project]);
+        return view('admin.edit', compact('project'));
     }
 
     /**
@@ -83,14 +83,13 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $request, $id)
+    public function update(ProjectRequest $request, Project $project)
     {
         $data = $request->validated();
 
-        $existingProject = Project::findOrFail($id);
-        $existingProject->update($data);
+        $project->update($data);
 
-        return redirect()->route('admin.projects.show', $id);
+        return redirect()->route('admin.projects.show', $project->slug);
     }
 
     /**

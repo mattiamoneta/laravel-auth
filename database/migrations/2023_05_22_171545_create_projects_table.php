@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Project;
 
 return new class extends Migration
 {
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->string('name', 150);
             $table->string('description');
             $table->string('thumb')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }

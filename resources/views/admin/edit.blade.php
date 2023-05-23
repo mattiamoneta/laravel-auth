@@ -9,7 +9,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="{{ route('admin.projects.update', $project->id) }}">
+                    <form method="post" action="{{ route('admin.projects.update', $project) }}">
 
                         @csrf
 
